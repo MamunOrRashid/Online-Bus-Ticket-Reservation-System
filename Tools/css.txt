@@ -1,2 +1,13 @@
-fmdfkdskdlf
-jkkkk
+CSS Advantage
+
+CSS handles the look and feel part of a web page. Using CSS, you can control the color of the text, the style of fonts, the spacing between paragraphs, how columns are sized and laid out, etc. The following are the advantages of CSS −
+•	CSS saves time - You can write CSS once and then reuse the same sheet in multiple HTML pages. You can define a style for each HTML element and apply it to as many Web pages as you want.
+•	Easy maintenance − To make a global change, simply change the style, and all elements in all the web pages will be updated automatically.
+•	Global web standards − Now HTML attributes are being deprecated and it is being recommended to use CSS. So it’s a good idea to start using CSS in all the HTML pages to make them compatible with future browsers.
+•	Platform Independence − The Script offer consistent platform independence and can support latest browsers as well.
+CSS Disadvantages
+•	Come in different levels - There’s CSS, CSS 1 up to CSS3, which has resulted in confusion among developers and web browsers. One type of CSS should be enough. It would be preferable than having to choose which CSS level to use.
+•	Fragmentation - With CSS, what works with one browser may not always work with another. This is why web developers have to test for compatibility, running the program across multiple browsers before a website is set live. If only people use Mozilla or Chrome, but they don’t.
+•	Lack of security - Because it is an open text-based system, CSS doesn’t have the built-in security that will protect it from being overridden. Anyone who has a read/write access to a website can change the CSS file, alter the links or disrupt the formatting, whether by accident or design.
+
+
