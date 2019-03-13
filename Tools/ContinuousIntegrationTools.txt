@@ -63,3 +63,61 @@ Continuous integration tools are given below:
              1. UI Interface is very intuitive.
              2. Configuration is a bit confusing.
              3. Errors messages are not very clear about what went wrong.
+
+## Tarvis
+* * *
+     ## Advantages:
+             1.Comes with free cloud-based hosting that requires no maintenance or administration
+             2.Capable of running tests on Linux and Mac OS X simultaneously
+             3.Supports the following languages: Android, C, C#, C++, Clojure, Crystal, D, Dart, Erlang, Elixir, F#, Go, 
+               Groovy, Haskell, Haxe, Java, JavaScript (with Node.js), Julia, Objective-C, Perl, Perl6, PHP, Python, R, 
+               Ruby, Rust, Scala, Smalltalk and Visual Basic
+
+             4.Lightweight and easy to set up
+             5.Free for open source projects
+             6.No dedicated server needed
+             7.Build matrix feature
+     ## Disadvantages:
+             1.Enterprise plans come with a cost
+             2.Limited options for customization
+
+##TeamCity
+* * *
+     ##Advantages
+             1.TeamCity provides a great integration with git, especially Bitbucket.
+             2.When a new code release (build) fails TeamCity has a great tool for investigation and troubleshooting.
+             3.TeamCity provides a user-friendly interface. While some technical knowledge is required to use TeamCity, 
+               the design helps simply things.
+     ##Disadvantages
+             1.Upgrading TeamCity is a long and manual process.
+             2.Java skills are needed to fully utilize TeamCity, although they are not necessary for basic or medium-level 
+               use.
+
+#GoCD
+* * *
+     ##ADvantages
+            1.Easy Setup for deployment pipeline
+            2.Environment Variables for each step
+            3.Supports both Windows and Linux agent
+            4.Highly customizable
+    ##Disadvantages
+            1.UI can be improved
+            2.Location for settings can be re-arranged
+            3.API for setting up pipeline
+
+##CircleCI
+* * *
+      Advantages:
+                1.Automated testing, building and deploying really helped or project in reaching maximum velocity for the 
+                  scrum teams.
+                2.Generous free plans for open source projects easy to set up plenty of features plenty of customization 
+                   runs quick.
+                3.-Docker support is great when using container based builds -Competitive pricing and free tier -Snappy / 
+                   Responsive UI.
+                4.Circle CI is being trusted by FB for React, and Fastlane.
+     Disadvantages:
+                1.The tutorials are not yet clear. They don't lead from start to workable CI.
+                2. Doesn't allow as many languages and environments out of the box as Travis CI does.
+                3.- config file tends to get verbose and too long .
+                4.Additional containers are a bit pricey. There are other services offering similar products at much lower 
+                  prices.
