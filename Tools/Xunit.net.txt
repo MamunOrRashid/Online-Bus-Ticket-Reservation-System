@@ -1,0 +1,8 @@
+﻿
+## xUnit.net:
+   * Advantage:
+        1. It Free, open source, community-focused unit testing tool for the .NET Framework
+        2. These frameworks derive their structure and functionality from Smalltalk’s SUnit. Following its introduction in Smalltalk, the framework was ported to Java and it gained wide popularity
+        3. Works with CodeRush, TestDriven.NET, ReSharper and Xamarin.
+   * Disadvantage:
+        1. XUnit does not appear to have explicit built-in support for external data source-based testing.
