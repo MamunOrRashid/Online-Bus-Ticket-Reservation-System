@@ -1,0 +1,65 @@
+﻿
+
+
+
+Continuous integration tools are given below:
+
+## Buildbot:
+
+
+***
+
+       ## Advantages:
+
+•	Highly configurable builds
+
+•	Hosted internally
+
+•	Free open source
+
+•	No external web fonts by default
+
+•	They build your code and run your tests without your conscious involvement
+
+•	They can build your code and run your tests in multiple environments.
+
+•	They provide a de facto set of docs on your build & test environment
+
+•	They are evidence that it is possible to build your code and run your tests on at least some platform.
+
+•	They can run all the tests, even the slow ones, regularly.
+
+
+
+      ## Disadvantages:
+
+•	It's online documentation is very sparse and it is very difficult to find docs for a consistent version number. Most of my gripes are with the Buildbot Website itself more than the product.
+
+•	Flexibility comes with a cost and you have to be a programmer to do something beyond trivial. Some of Buildbot extensions were hard to customize and reuse.
+
+•	The learning curve to get started with this was much heavier
+
+•	Debugging not easy
+
+## GitLab CI
+
+* * * 
+      ## Advantages:
+            1. It is an integral part of the open-source Rails project GitLab and a free hosted service.
+            2. It  can run on Windows, Linux, OSX, FreeBSD, and Docker.
+            3. It can run multiple jobs concurrently.
+      ## Disadvantages:
+            1.  GitLab is open core and anyone can contribute changes directly to the codebase.
+
+## Jenkins
+* * * 
+      ## Advantages:
+            1.Jenkins is an open-source CI tool written in Java.
+            2. Flexible.
+            3. Jenkins plugin list is very comprehensive.
+            4.  Jenkins prides itself on distributing builds and test loads on multiple machines.
+            5. Easy installation.
+      ## Disadvantages:
+             1. UI Interface is very intuitive.
+             2. Configuration is a bit confusing.
+             3. Errors messages are not very clear about what went wrong.
