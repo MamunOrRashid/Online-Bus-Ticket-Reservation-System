@@ -1,0 +1,69 @@
+NUnit:
+ Advantage:
+	-fast
+	-test isolation
+	-environment isolation - use Mock  Objects
+	-unit testing gives you a safety net when programmers refactor or add functionality
+	-unit tests can be used as documentation for other programmers
+	-Development process becomes more flexible.
+ Disadvantage:
+	-Unnecessary Unit Tests can lead to considerably high maintenance cost to your overall project.
+
+
+JUnit:
+ Advantage:
+	-Programmers become more productive
+	-Increase the Quality of the developed code.
+	- Easily run regression tests, i.e. run your tests again and again.
+	-You could write the tests before writing the code.
+	-Can be composed into a hierarchy of test suits.
+ Disadvantage:
+	-JUnit has disadvantages in different testing areas, a major one being that it can only run tests on one JVM (Java virtual machine).
+
+
+TestNG:
+ Advantage:
+	-It gives the facility to produce HTML Reports of implementation.
+	-Annotation have made testers life easier.
+	-Test case can be Prioritized and Grouped more easily.
+	-It makes Parallel testing easier.
+	-Logs can be generated.
+	-It makes Data Parameterization possible.
+ Disadvantage: 
+	-simple
+
+PHPUnit:
+ Advantage:
+	-Your code coverage should more accurately show code that was actually tested.
+ Disadvantage:
+	-The risks is that sometimes a test is meant to test multiple functions and it would require having multiple @covers annotations
+	-if you change the method or function name and don't update the @covers annotation, then your code coverage won't cover the function or method you actually tested.
+ 
+Emma
+ Advantages:
+       •EMMA is an open-source toolkit for analyzing and reporting code written in Java language.
+       •Emma support coverage types like method, line, basic block.
+       •It is Java-based so it is without external library dependencies and can access the source code.
+
+JTest
+ Advantages:
+       •JTest is Unit Testing solution developed and designed by Parasoft
+       •It is highly used for testing Java application and supports static code analysis
+       •It also includes data flow static analysis, metrics analysis, run-time error detection etc.
+       •JTest also performs regression testing, end-to-end functional and load testing for complex application
+       •It helps to capture actual code behavior and generates JUnit tests for coverage analysis.
+
+Mockito
+ Advantages
+       •No need to write mock objects on your own.
+       •Renaming interface method names or reordering parameters will not break the test code as Mocks are created at runtime.
+       •Supports return values.
+       •Supports exceptions.
+       •Supports check on order of method calls.
+       •Supports creating mocks using annotation.
+ Disadvantages:
+       •Cannot mock final classes
+       •Cannot mock final methods - their real behavior is executed without any exception. Mockito cannot warn you about mocking final methods so be vigilant.
+       •Cannot mock static methods
+       •Cannot mock constructors
+
