@@ -250,7 +250,7 @@ PreparedStatement pst;
 
     private void btnCreate_RegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreate_RegistrationActionPerformed
         // TODO add your handling code here:
-        String sql = "insert into registration(uid,uname,upass,email,city,country,address,phone,usertype) values(?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into registration(uid,userName,password,email,country,city,address,phone,userType) values(?,?,?,?,?,?,?,?,?)";
         
         try{
         pst = conn.prepareStatement(sql);
