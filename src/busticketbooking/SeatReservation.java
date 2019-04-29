@@ -18,32 +18,30 @@ import javax.swing.JOptionPane;
  * @author Dristy
  */
 public class SeatReservation extends javax.swing.JFrame {
-  Connection conn;
+
+    Connection conn;
     ResultSet rs;
     PreparedStatement pst;
-    String ob;String bid;
-    
-    
+    PreparedStatement pstmt;
+    private String s_busId;
+    private String s_availableSeat;
+    private int i_availableSeat;
+    private int i_updatedAvailableSeat;
+    String s_userId;
+
     /**
-     * Creates new form SeatReservation
+     * Creates new form BookReservation
      */
-    
     public SeatReservation() throws SQLException {
-        super("Booking");
+        super("SeatReservation");
         initComponents();
         conn = JavaConnect.ConnecrDb();
-    this.bid=bid;
     }
- 
- public void setBid(String x)
- {
- this.bid=x;
- }
- public String getBid()
- {
- return bid;
- }
- 
+
+    public void setBusId(String busId) {
+        this.s_busId = busId;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,198 +57,231 @@ public class SeatReservation extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        comboboxSelectBus_booking = new javax.swing.JComboBox<>();
-        comboboxBusType_booking = new javax.swing.JComboBox<>();
-        comboboxFrom_booking = new javax.swing.JComboBox<>();
-        comboboxTo_booking = new javax.swing.JComboBox<>();
-        etDate_booking = new javax.swing.JTextField();
-        etTime_booking = new javax.swing.JTextField();
-        btnSubmit_booking = new javax.swing.JButton();
+        etEmail_booking = new javax.swing.JTextField();
+        etPassword_booking = new javax.swing.JTextField();
+        etTotalSeatBook_booking = new javax.swing.JTextField();
+        etWeight_booking = new javax.swing.JTextField();
+        btnBookNow_booking = new javax.swing.JButton();
+        btnShowAvailableSeat_booking = new javax.swing.JButton();
+        etShowAvailableSeat_booking = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Select Bus");
+        jLabel1.setText("Email");
 
-        jLabel2.setText("Selct Type");
+        jLabel2.setText("Password");
 
-        jLabel3.setText("From");
+        jLabel5.setText("Total Seat To Book");
 
-        jLabel4.setText("To");
+        jLabel6.setText("Carried Weight");
 
-        jLabel5.setText("Date");
-
-        jLabel6.setText("Time");
-
-        comboboxSelectBus_booking.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Bus", "Welcome", "Khulna", "Borisal", "Vola", "Feni" }));
-
-        comboboxBusType_booking.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "AC", "Non_AC" }));
-
-        comboboxFrom_booking.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "From", "Dhaka", "Khulna", "Vola", "Feni", "Borisal" }));
-
-        comboboxTo_booking.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destination", "Dhaka", "Khulna", "Vola", "Feni" }));
-
-        etDate_booking.addActionListener(new java.awt.event.ActionListener() {
+        etEmail_booking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                etDate_bookingActionPerformed(evt);
+                etEmail_bookingActionPerformed(evt);
             }
         });
 
-        etTime_booking.addActionListener(new java.awt.event.ActionListener() {
+        etPassword_booking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                etTime_bookingActionPerformed(evt);
+                etPassword_bookingActionPerformed(evt);
             }
         });
 
-        btnSubmit_booking.setText("Submit");
-        btnSubmit_booking.addActionListener(new java.awt.event.ActionListener() {
+        etWeight_booking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmit_bookingActionPerformed(evt);
+                etWeight_bookingActionPerformed(evt);
             }
         });
+
+        btnBookNow_booking.setBackground(new java.awt.Color(0, 153, 51));
+        btnBookNow_booking.setText("Book Now");
+        btnBookNow_booking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookNow_bookingActionPerformed(evt);
+            }
+        });
+
+        btnShowAvailableSeat_booking.setBackground(new java.awt.Color(0, 204, 204));
+        btnShowAvailableSeat_booking.setText("Click To See Available Seat");
+        btnShowAvailableSeat_booking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowAvailableSeat_bookingActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Available Seat");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboboxBusType_booking, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comboboxTo_booking, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comboboxSelectBus_booking, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comboboxFrom_booking, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etDate_booking)
-                    .addComponent(etTime_booking))
-                .addContainerGap(160, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSubmit_booking)
-                .addGap(78, 78, 78))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(48, 48, 48)
+                        .addComponent(etWeight_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel7))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(etPassword_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(etTotalSeatBook_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(etEmail_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(etShowAvailableSeat_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(44, 58, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(btnBookNow_booking))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(btnShowAvailableSeat_booking)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(comboboxSelectBus_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(btnShowAvailableSeat_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etShowAvailableSeat_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etEmail_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(comboboxBusType_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(comboboxFrom_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(comboboxTo_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(etPassword_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(etDate_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(etTotalSeatBook_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addComponent(jLabel3)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(etTime_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(btnSubmit_booking)
-                .addContainerGap())
+                    .addComponent(etWeight_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel4)
+                .addGap(30, 30, 30)
+                .addComponent(btnBookNow_booking)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSubmit_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmit_bookingActionPerformed
+    private void etEmail_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etEmail_bookingActionPerformed
         // TODO add your handling code here:
-         String sql = "select * from BusInformation where Bname=? and Btype=? and FromRoute=? and ToRoute=? and Date=? and Time=?";
+    }//GEN-LAST:event_etEmail_bookingActionPerformed
+
+    private void btnBookNow_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookNow_bookingActionPerformed
+        // when clicked 'Book' button
+        String sql1 = "select uid from registration where email=? and password=?";
+        String sql2 = "insert into booking_information(uid,bid,noofseat,weight_kg)values(?,?,?,?)";
+        String sql3 = "select bavailable from busscheduling where bid=?";
+        String sql4 = "update busscheduling set bavailable=? where bid=?";
+        //get userid using email and password 
         try {
-            pst = conn.prepareStatement(sql);
-
-            String bname = (String) comboboxSelectBus_booking.getSelectedItem();
-            String btype = (String) comboboxBusType_booking.getSelectedItem();
-            String from = (String) comboboxFrom_booking.getSelectedItem();
-            String to = (String) comboboxTo_booking.getSelectedItem();
-            String date = etDate_booking.getText();
-            String time = etTime_booking.getText();
-            
-           
-             boolean isDate = false;
-            boolean isTime1 = false;
-            boolean isTime2 = false;
-         String datePattern = "\\d{1,2}-\\d{1,2}-\\d{4}";
-         String timePattern1 = "\\d{1,2}:\\d{1,2}am";
-         String timePattern2 = "\\d{1,2}:\\d{1,2}pm";
-      isDate = date.matches(datePattern);
-      if(isDate==false)
-      {
-      JOptionPane.showMessageDialog(null, "Date in wrong format");
-      }
-     isTime1= time.matches(timePattern1);
-     isTime2= time.matches(timePattern2);
-      if((isTime1==false)&&(isTime2==false))
-      {
-      JOptionPane.showMessageDialog(null, "Time in wrong format");
-      }
-       pst.setString(1, bname);
-            pst.setString(2, btype);
-            pst.setString(3, from);
-            pst.setString(4, to);
-            pst.setString(5, date);
-            pst.setString(6, time);
-            rs = pst.executeQuery();
-            BookReservation home = null;
-int flag=0; 
-                if(rs.next()) {
-                    ob=rs.getString("BID");
-                    setBid(ob);
-                    setVisible(false);
-                    home = new BookReservation();
-                    home.setVisible(true);
-                    rs.close();
-                    pst.close();
-                     flag=1;
-     
-                   
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "There is no bus available");
-                }
-                 
-
-         
+            pst = conn.prepareStatement(sql1);
+            String s_email = etEmail_booking.getText();
+            String s_password = etPassword_booking.getText();
+            pst.setString(1, s_email);
+            pst.setString(2, s_password);
+            rs = pst.executeQuery();        //SQL query is  "select uid from registration where email=? and password=?"
+            if (rs.next()) {
+                s_userId = rs.getString("UID");
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect Email and Password!! Try Again");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        } finally {
-            try {
-                rs.close();
-                pst.close();
-            } catch (Exception e) {
-
-            }
         }
+        // updating available seat and showing available seat
+        try {
+            pst = conn.prepareStatement(sql3);
+            pstmt = conn.prepareStatement(sql4);
+            pst.setString(1, s_busId);
+            rs = pst.executeQuery();     //query = "select bavailable from busscheduling where bid=?"
+            if (rs.next()) {
+                s_availableSeat = rs.getString("BAVAILABLE");
+                i_availableSeat = Integer.parseInt(s_availableSeat);
+                String totalBookedSeat = etTotalSeatBook_booking.getText();
+                int i_totalBookedSeat = Integer.parseInt(totalBookedSeat);
+                i_updatedAvailableSeat = i_availableSeat - i_totalBookedSeat;
+                if (i_updatedAvailableSeat >= 0) {                                  //if updatedAvailableSeat is greater than or equal to zero then update the BAVAILABLE column of busscheduling table   
+                    String s_updatedAvailableSeat = Integer.toString(i_updatedAvailableSeat);
+                    etShowAvailableSeat_booking.setText(s_updatedAvailableSeat);
+                    pstmt.setInt(1, i_updatedAvailableSeat);
+                    pstmt.setString(2, s_busId);
+                    pstmt.executeUpdate();   //SQL query is "update busscheduling set bavailable=? where bid=?
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        //insert data into booking_information table column (UID,BID,NOOFSEAT,WEIGHT_KG)
+        try {
+            pst = conn.prepareStatement(sql2);
+            String s_noSeat = etTotalSeatBook_booking.getText();
+            int i_noSeat = Integer.parseInt(s_noSeat);
+            String s_weight = etWeight_booking.getText();
+            int i_remainingSeat = i_availableSeat - i_noSeat;
+            if (i_remainingSeat >= 0) {              //if total number of seat to book is less than or equal to available seat then user can book
+                pst.setString(1, s_userId);
+                pst.setString(2, s_busId);
+                pst.setString(3, s_noSeat);
+                pst.setString(4, s_weight);
+                pst.execute();                        //SQL query is "insert into booking_information(uid,bid,noofseat,weight_kg)values(?,?,?,?)"
+                JOptionPane.showMessageDialog(null, "Successfully Booked");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnBookNow_bookingActionPerformed
 
-    }//GEN-LAST:event_btnSubmit_bookingActionPerformed
-
-    private void etDate_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etDate_bookingActionPerformed
+    private void etWeight_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etWeight_bookingActionPerformed
         // TODO add your handling code here:
-       
-    }//GEN-LAST:event_etDate_bookingActionPerformed
+    }//GEN-LAST:event_etWeight_bookingActionPerformed
 
-    private void etTime_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etTime_bookingActionPerformed
+    private void etPassword_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etPassword_bookingActionPerformed
         // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_etTime_bookingActionPerformed
+    }//GEN-LAST:event_etPassword_bookingActionPerformed
+
+    private void btnShowAvailableSeat_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAvailableSeat_bookingActionPerformed
+        // TODO add your handling code here:
+        // show available seat in a textfield labeled with 'Available Seat' by clicking 'Click To See Available Seat'button
+        String sql = "select bavailable from busscheduling where bid=?";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, s_busId);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                s_availableSeat = rs.getString("BAVAILABLE");
+                etShowAvailableSeat_booking.setText(s_availableSeat);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnShowAvailableSeat_bookingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,6 +310,8 @@ int flag=0;
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -292,20 +325,20 @@ int flag=0;
         });
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSubmit_booking;
-    private javax.swing.JComboBox<String> comboboxBusType_booking;
-    private javax.swing.JComboBox<String> comboboxFrom_booking;
-    private javax.swing.JComboBox<String> comboboxSelectBus_booking;
-    private javax.swing.JComboBox<String> comboboxTo_booking;
-    private javax.swing.JTextField etDate_booking;
-    private javax.swing.JTextField etTime_booking;
+    private javax.swing.JButton btnBookNow_booking;
+    private javax.swing.JButton btnShowAvailableSeat_booking;
+    private javax.swing.JTextField etEmail_booking;
+    private javax.swing.JTextField etPassword_booking;
+    private javax.swing.JTextField etShowAvailableSeat_booking;
+    private javax.swing.JTextField etTotalSeatBook_booking;
+    private javax.swing.JTextField etWeight_booking;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
