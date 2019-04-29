@@ -248,27 +248,68 @@ PreparedStatement pst;
        
     }//GEN-LAST:event_btnClear_RegistrationActionPerformed
 
-    private void btnCreate_RegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreate_RegistrationActionPerformed
-        // TODO add your handling code here:
-        String sql = "insert into registration(uid,userName,password,email,country,city,address,phone,userType) values(?,?,?,?,?,?,?,?,?)";
-        
-        try{
-        pst = conn.prepareStatement(sql);
-            pst.setString(1, etId_registration.getText());
-            pst.setString(2, etUserName_registration.getText());
-            pst.setString(3, etPassword_registration.getText());
-            pst.setString(4, etEmail_registration.getText());
-            pst.setString(5, etCountry_registration.getText());
-            pst.setString(6, etCity_registration.getText());
-            pst.setString(7, etAddress_registration.getText());
-            pst.setString(8, etPhone_registration.getText());
-            pst.setString(9, (String) comboboxUserType_registration.getSelectedItem());
-            pst.execute();
-            
-            JOptionPane.showMessageDialog(null, "Congrats\nAccount has been Created!");
+    private boolean dataValidation() {
 
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+        boolean flag = true, upperCase = true, lowerCase = true;
+        String s_email = etEmail_registration.getText();
+        String s_password = etPassword_registration.getText();
+
+        String s_address = etAddress_registration.getText();
+        String s_city = etCity_registration.getText();
+        String s_country = etCountry_registration.getText();
+        String s_id = etId_registration.getText();
+        String s_phone = etPhone_registration.getText();
+        String s_name = etUserName_registration.getText();
+
+        if (!s_email.endsWith("@gmail.com")) {
+            flag = false;
+            JOptionPane.showMessageDialog(null, "Invalid email format");
+        }
+        if (s_password.length() < 8) {
+            flag = false;
+            JOptionPane.showMessageDialog(null, "password length at least 8 character");
+        }
+        if (s_password.contains(" ")) {
+            flag = false;
+            JOptionPane.showMessageDialog(null, "space is not allowed in password");
+        }
+
+        if (!s_phone.startsWith("017") | !s_phone.startsWith("019")) {
+            flag = false;
+            JOptionPane.showMessageDialog(null, "Insert valid phone number!");
+        }
+        
+        if (s_email.isEmpty() && s_password.isEmpty() && s_address.isEmpty() && s_city.isEmpty() && s_country.isEmpty() && s_id.isEmpty() && s_phone.isEmpty() && s_name.isEmpty()) {
+            flag = false;
+            JOptionPane.showMessageDialog(null, "All field must be filled up!");
+        }
+        return flag;
+    }
+    
+    private void btnCreate_RegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreate_RegistrationActionPerformed
+         if (dataValidation()) {
+
+            ////////
+            String s_sql = "insert into registration(uid,userName,password,email,country,city,address,phone,userType) values(?,?,?,?,?,?,?,?,?)";
+
+            try {
+                pst = conn.prepareStatement(s_sql);
+                pst.setString(1, etId_registration.getText());
+                pst.setString(2, etUserName_registration.getText());
+                pst.setString(3, etPassword_registration.getText());
+                pst.setString(4, etEmail_registration.getText());
+                pst.setString(5, etCountry_registration.getText());
+                pst.setString(6, etCity_registration.getText());
+                pst.setString(7, etAddress_registration.getText());
+                pst.setString(8, etPhone_registration.getText());
+                pst.setString(9, (String) comboboxUserType_registration.getSelectedItem());
+                pst.execute();
+
+                JOptionPane.showMessageDialog(null, "Congrats\nAccount has been Created!");
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
         }
     }//GEN-LAST:event_btnCreate_RegistrationActionPerformed
 
