@@ -192,8 +192,19 @@ public class SeatReservation extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_etEmail_bookingActionPerformed
 
+    private int weightCalculation(int seatNumber, String weight){
+        int i_seatPrice = 400, totalPrice = 0;
+        double d_weight = Double.parseDouble(weight);
+        if(d_weight>5.0){
+            totalPrice += (d_weight-5)*20;
+        }
+        return seatNumber*i_seatPrice + totalPrice; 
+    }
+    
     private void btnBookNow_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookNow_bookingActionPerformed
-        // when clicked 'Book' button
+       
+        
+// when clicked 'Book' button
         String sql1 = "select uid from registration where email=? and password=?";
         String sql2 = "insert into booking_information(uid,bid,noofseat,weight_kg)values(?,?,?,?)";
         String sql3 = "select bavailable from busscheduling where bid=?";
@@ -220,6 +231,7 @@ public class SeatReservation extends javax.swing.JFrame {
             pstmt = conn.prepareStatement(sql4);
             pst.setString(1, s_busId);
             rs = pst.executeQuery();     //query = "select bavailable from busscheduling where bid=?"
+            
             if (rs.next()) {
                 s_availableSeat = rs.getString("BAVAILABLE");
                 i_availableSeat = Integer.parseInt(s_availableSeat);
@@ -245,10 +257,12 @@ public class SeatReservation extends javax.swing.JFrame {
             String s_weight = etWeight_booking.getText();
             int i_remainingSeat = i_availableSeat - i_noSeat;
             if (i_remainingSeat >= 0) {              //if total number of seat to book is less than or equal to available seat then user can book
+                int i_money = weightCalculation(i_remainingSeat,s_weight);
                 pst.setString(1, s_userId);
                 pst.setString(2, s_busId);
                 pst.setString(3, s_noSeat);
                 pst.setString(4, s_weight);
+                pst.setInt(5,i_money);
                 pst.execute();                        //SQL query is "insert into booking_information(uid,bid,noofseat,weight_kg)values(?,?,?,?)"
                 JOptionPane.showMessageDialog(null, "Successfully Booked");
             }
