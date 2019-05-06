@@ -13,7 +13,9 @@ package busticketbooking;
 import java.sql.*;
 //import javax.swing.JOptionPane;
 
+
 public class JavaConnect {
+
     Connection conn = null;
 
     public static Connection ConnecrDb() throws SQLException {

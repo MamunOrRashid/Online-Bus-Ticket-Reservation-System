@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author mp
  */
 public class Login extends javax.swing.JFrame {
+
     Connection conn;
     ResultSet rs;
     PreparedStatement pst;
@@ -82,7 +83,7 @@ public class Login extends javax.swing.JFrame {
 
         Name.setText("Password");
 
-        comboboxUserType_login.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Role As", "admin", "normal user", " " }));
+        comboboxUserType_login.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Role As", "admin", "normal user" }));
         comboboxUserType_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboboxUserType_loginActionPerformed(evt);
@@ -215,52 +216,68 @@ public class Login extends javax.swing.JFrame {
         try {
             pst = conn.prepareStatement(sql);
 
-            String email = etEmail_login.getText();
-            String password = etPassword_login.getText();
+            // String email = etEmail_login.getText();
+            //String password = etPassword_login.getText();
             String userType = (String) comboboxUserType_login.getSelectedItem();
 
-            if (userType.compareTo("normal user") == 0) {
-                pst.setString(1, etEmail_login.getText());
-                pst.setString(2, etPassword_login.getText());
-                rs = pst.executeQuery();
+            pst.setString(1, etEmail_login.getText());
+            pst.setString(2, etPassword_login.getText());
+            rs = pst.executeQuery();
 
-                HomePage home = null;
+            HomePage home = null;
+            Admin admin = null;
 
-                if (rs.next()) {
+            if (rs.next()) {
 
-                    setVisible(false);
+                setVisible(false);
+                if (userType.compareTo("normal user") == 0) {
+                    String userId = rs.getString("uid");
+                    
+                   // System.out.println("user id:....................."+userId);
                     home = new HomePage();
                     home.setVisible(true);
-                    rs.close();
-                    pst.close();
+                    home.setUserId(userId);
+                    home.setEmail(etEmail_login.getText());
+                    home.setPassword(etPassword_login.getText());
 
-                } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect Email and Password!!");
+                } else if (userType.compareTo("admin") == 0) {
+                    admin = new Admin();
+                    admin.setVisible(true);
                 }
-            } /*else if (tf.compareTo("admin") == 0) {
-             pst.setString(1, EmailLogin.getText());
-             pst.setString(2, PasswordLogin.getText());
+                rs.close();
+                pst.close();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect Email and Password!!");
+            }
+
+            /*  if (userType.compareTo("normal user") == 0) {
+             pst.setString(1, etEmail_login.getText());
+             pst.setString(2, etPassword_login.getText());
              rs = pst.executeQuery();
 
-             Loading ob = new Loading();
-             ob.setUser("admin");
+             HomePage home = null;
+
              if (rs.next()) {
 
              setVisible(false);
-
-             ob = new Loading();
-             ob.setUpLoading();
-             ob.setVisible(true);
-
+             home = new HomePage();
+             home.setVisible(true);
              rs.close();
              pst.close();
 
              } else {
-             JOptionPane.showMessageDialog(null, "Incorrect ID and Name");
+             JOptionPane.showMessageDialog(null, "Incorrect Email and Password!!");
              }
+             } else if (userType.compareTo("admin") == 0) {
+             pst.setString(1, etEmail_login.getText());
+             pst.setString(2, etPassword_login.getText());
+             rs = pst.executeQuery();
+                
+                
 
-             }*/
-
+             }
+             */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
@@ -304,6 +321,7 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
