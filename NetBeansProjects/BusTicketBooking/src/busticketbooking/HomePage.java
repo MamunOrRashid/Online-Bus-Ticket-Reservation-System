@@ -76,14 +76,14 @@ public class HomePage extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        comboboxSelectBus_booking = new javax.swing.JComboBox<String>();
+        comboboxSelectBus_booking = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        comboboxBusType_booking = new javax.swing.JComboBox<String>();
-        comboboxFrom_booking = new javax.swing.JComboBox<String>();
+        comboboxBusType_booking = new javax.swing.JComboBox<>();
+        comboboxFrom_booking = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        comboboxTo_booking = new javax.swing.JComboBox<String>();
+        comboboxTo_booking = new javax.swing.JComboBox<>();
         etDate_booking = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -132,24 +132,28 @@ public class HomePage extends javax.swing.JFrame {
         etName_checkingfare = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         etPrice_checkingfare = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jTextField2 = new javax.swing.JTextField();
+        etNotice_Notification = new javax.swing.JTextField();
+        btnShow_noticeBoard = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        comboboxSelectBus_booking.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Bus", "Welcome", "Grameen Seba", "Borisal", "Vola", "Feni" }));
+        comboboxSelectBus_booking.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Bus", "Welcome", "Grameen Seba", "Borisal", "Vola", "Feni" }));
 
         jLabel2.setText("Select Bus");
 
         jLabel3.setText("Selct Type");
 
-        comboboxBusType_booking.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "AC", "Non_AC" }));
+        comboboxBusType_booking.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "AC", "Non_AC" }));
 
-        comboboxFrom_booking.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "From", "Dhaka", "Khulna", "Vola", "Feni", "Borisal" }));
+        comboboxFrom_booking.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "From", "Dhaka", "Khulna", "Vola", "Feni", "Borisal" }));
 
         jLabel4.setText("From");
 
         jLabel5.setText("To");
 
-        comboboxTo_booking.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Destination", "Dhaka", "Khulna", "Vola", "Feni" }));
+        comboboxTo_booking.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destination", "Dhaka", "Khulna", "Vola", "Feni" }));
 
         etDate_booking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -582,6 +586,44 @@ public class HomePage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Checking Fare", jPanel4);
 
+        jTextField2.setText("Notice");
+
+        btnShow_noticeBoard.setText("Show");
+        btnShow_noticeBoard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShow_noticeBoardActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(121, Short.MAX_VALUE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(etNotice_Notification, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(268, 268, 268))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(206, 206, 206)
+                .addComponent(btnShow_noticeBoard)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etNotice_Notification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72)
+                .addComponent(btnShow_noticeBoard)
+                .addContainerGap(326, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Notice Board", jPanel5);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1004,6 +1046,31 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_etPrice_checkingfareActionPerformed
 
+    private void btnShow_noticeBoardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShow_noticeBoardActionPerformed
+
+        String s_sql = "select * from notice where uid=?";
+        try{
+
+            pst = conn.prepareStatement(s_sql);
+            // pst.setInt(1, Integer.parseInt(etUid_cancellingTicket.getText()));
+            pst.setString(1, userId);
+            rs=pst.executeQuery();
+            if(rs.next())
+            {
+              //  etUid_Notification.setText(rs.getString("uid"));
+                etNotice_Notification.setText(rs.getString("notice"));
+
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "recrod not found");
+            }
+
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnShow_noticeBoardActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1051,6 +1118,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton btnPayment;
     private javax.swing.JButton btnSearch_cancellingTicket;
     private javax.swing.JButton btnShowAvailableSeat_booking;
+    private javax.swing.JButton btnShow_noticeBoard;
     private javax.swing.JButton btnSubmit_booking;
     private javax.swing.JButton btnSubmit_checkingfare;
     private javax.swing.JComboBox<String> comboboxBusType_booking;
@@ -1066,6 +1134,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JTextField etEnterMoney_payment;
     private javax.swing.JTextField etName_checkingfare;
     private javax.swing.JTextField etNoOfSeat_cancellingTicket;
+    private javax.swing.JTextField etNotice_Notification;
     private javax.swing.JTextField etPayableMoney_payment;
     private javax.swing.JTextField etPrice_checkingfare;
     private javax.swing.JTextField etShowAvailableSeat_booking;
@@ -1099,7 +1168,9 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel labelBusId_cancellingTicket;
     private javax.swing.JLabel labelNoOfSeat_cancellingTicket;
     private javax.swing.JLabel labelWeight_cancellingTicket;
