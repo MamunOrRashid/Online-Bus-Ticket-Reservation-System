@@ -105,6 +105,7 @@ public class BusScheduling {
             pst.setString(11, bdate);
 
             pst.execute();
+            //BusSchedulingTest bus = new BusSchedulingTest
 
             JOptionPane.showMessageDialog(null, "Schedule Added");
 
