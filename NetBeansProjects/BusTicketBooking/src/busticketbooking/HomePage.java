@@ -136,6 +136,25 @@ public class HomePage extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         etNotice_Notification = new javax.swing.JTextField();
         btnShow_noticeBoard = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        etDate_busReservation = new javax.swing.JTextField();
+        comboboxTo_busReservation = new javax.swing.JComboBox<>();
+        comboboxFrom_busReservation = new javax.swing.JComboBox<>();
+        comboboxBusType_busReservation = new javax.swing.JComboBox<>();
+        btnOK_busReservation = new javax.swing.JButton();
+        etBusId1_reservation = new javax.swing.JTextField();
+        etBusName1_reservation = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        etBusidReservation_reservation = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        etWeight_busReservation = new javax.swing.JTextField();
+        btnReserve_busReservation = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -624,6 +643,136 @@ public class HomePage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Notice Board", jPanel5);
 
+        jLabel12.setText("Bus Type");
+
+        jLabel14.setText("From");
+
+        jLabel15.setText("To");
+
+        jLabel16.setText("Date");
+
+        comboboxTo_busReservation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destination", "Dhaka", "Khulna", "Feni", "Vola", "Tangail" }));
+
+        comboboxFrom_busReservation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Departure", "Dhaka", "Khulna", "Feni", "Vola", "Tangail" }));
+
+        comboboxBusType_busReservation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "AC", "Non_AC" }));
+        comboboxBusType_busReservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboboxBusType_busReservationActionPerformed(evt);
+            }
+        });
+
+        btnOK_busReservation.setText("OK");
+        btnOK_busReservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOK_busReservationActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("Bus Name");
+
+        jLabel18.setText("Bus Id");
+
+        jLabel19.setText("Enter bus id");
+
+        jLabel20.setText("Carried Weight");
+
+        btnReserve_busReservation.setText("Reserve");
+        btnReserve_busReservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReserve_busReservationActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16))
+                        .addGap(54, 54, 54)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(etDate_busReservation)
+                            .addComponent(comboboxTo_busReservation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboboxFrom_busReservation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboboxBusType_busReservation, 0, 139, Short.MAX_VALUE))
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(etBusId1_reservation, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGap(142, 142, 142)
+                                        .addComponent(btnReserve_busReservation))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGap(41, 41, 41)
+                                        .addComponent(jLabel20)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(etWeight_busReservation))))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(etBusName1_reservation, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)
+                                .addComponent(jLabel19)
+                                .addGap(18, 18, 18)
+                                .addComponent(etBusidReservation_reservation, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(btnOK_busReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(245, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(comboboxBusType_busReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(comboboxFrom_busReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etBusName1_reservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17)
+                    .addComponent(etBusidReservation_reservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(comboboxTo_busReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etBusId1_reservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(etWeight_busReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(etDate_busReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReserve_busReservation))))
+                .addGap(36, 36, 36)
+                .addComponent(btnOK_busReservation)
+                .addContainerGap(304, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Bus Reservation", jPanel6);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1071,6 +1220,100 @@ public class HomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnShow_noticeBoardActionPerformed
 
+    private void comboboxBusType_busReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxBusType_busReservationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboboxBusType_busReservationActionPerformed
+
+    private void btnOK_busReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOK_busReservationActionPerformed
+        // TODO add your handling code here:
+        String sql = "select * from BUSSCHEDULING where BTYPE=? and BFROM=? and BTO=? and BDATE=?";
+        try {
+            pst = conn.prepareStatement(sql);
+            String s_busType = (String) comboboxBusType_busReservation.getSelectedItem();
+            String s_fromRoute = (String) comboboxFrom_busReservation.getSelectedItem();
+            String s_toRoute = (String) comboboxTo_busReservation.getSelectedItem();
+            String s_date = etDate_busReservation.getText();
+            pst.setString(1, s_busType);
+            pst.setString(2, s_fromRoute);
+            pst.setString(3, s_toRoute);
+            pst.setString(4, s_date);
+            rs = pst.executeQuery();
+            String name = "", id = "";
+            int flag = 0;
+            while (rs.next()) {
+                String s_availableSeat = rs.getString("BAVAILABLE");
+                String s_totalSeat = rs.getString("BTOTALSEAT");
+                int i_availableSeat = Integer.parseInt(s_availableSeat);
+                int i_totalSeat = Integer.parseInt(s_totalSeat);
+                System.out.println(i_availableSeat);
+                System.out.println(i_totalSeat);
+                if (i_totalSeat == i_availableSeat) {
+
+                    name = name + " " + rs.getString("bname");
+                    id = id + " " + rs.getString("bid");
+                    flag = 1;
+
+                    //JOptionPane.showMessageDialog(null, " full bus");
+                }// else {
+                    // JOptionPane.showMessageDialog(null, "There is no full bus to book");
+                    //  }
+
+                if (flag == 1) {
+                    etBusName1_reservation.setText(name);
+                    etBusId1_reservation.setText(id);
+                }
+            }
+            if (flag == 0) {
+                JOptionPane.showMessageDialog(null, "There is no full bus to book");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }//GEN-LAST:event_btnOK_busReservationActionPerformed
+
+    private void btnReserve_busReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserve_busReservationActionPerformed
+        // TODO add your handling code here:
+        String noofseat="" ;
+        String s_busId1 = etBusidReservation_reservation.getText();
+        String s_weight = etWeight_busReservation.getText();
+        String sql1 = "select bavailable from busscheduling where bid=?";
+        String sql2 = "insert into booking_information(uid,bid,noofseat,weight_kg)values(?,?,?,?)";
+        String sql3 = "update busscheduling set bavailable=? where bid=?";
+
+        try {
+            pst = conn.prepareStatement(sql1);
+            pst.setString(1, s_busId1);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                noofseat = rs.getString("BAVAILABLE");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        int i_noofseat = Integer.parseInt(noofseat);
+        if(i_noofseat!=0){
+            try {
+                pst = conn.prepareStatement(sql2);
+                pstmt=conn.prepareStatement(sql3);
+                pst.setString(1, userId);
+                pst.setString(2, s_busId1);
+                pst.setString(3, noofseat);
+                pst.setString(4, s_weight);
+                pst.execute();                        //SQL query is "insert into booking_information(uid,bid,noofseat,weight_kg)values(?,?,?,?)"
+                JOptionPane.showMessageDialog(null, "Successfully Booked");
+                pstmt.setString(1,"0");
+                pstmt.setString(2,s_busId1);
+                pstmt.executeUpdate();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }}
+            else{
+                JOptionPane.showMessageDialog(null, "Can not Book ");
+            }
+    }//GEN-LAST:event_btnReserve_busReservationActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1115,21 +1358,30 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton btnBookNow_booking;
     private javax.swing.JButton btnClear_cancellingTicket;
     private javax.swing.JButton btnDelete_cancellingTicket;
+    private javax.swing.JButton btnOK_busReservation;
     private javax.swing.JButton btnPayment;
+    private javax.swing.JButton btnReserve_busReservation;
     private javax.swing.JButton btnSearch_cancellingTicket;
     private javax.swing.JButton btnShowAvailableSeat_booking;
     private javax.swing.JButton btnShow_noticeBoard;
     private javax.swing.JButton btnSubmit_booking;
     private javax.swing.JButton btnSubmit_checkingfare;
     private javax.swing.JComboBox<String> comboboxBusType_booking;
+    private javax.swing.JComboBox<String> comboboxBusType_busReservation;
     private javax.swing.JComboBox comboboxBusType_checkingfare;
     private javax.swing.JComboBox<String> comboboxFrom_booking;
+    private javax.swing.JComboBox<String> comboboxFrom_busReservation;
     private javax.swing.JComboBox comboboxFrom_checkingfare;
     private javax.swing.JComboBox<String> comboboxSelectBus_booking;
     private javax.swing.JComboBox<String> comboboxTo_booking;
+    private javax.swing.JComboBox<String> comboboxTo_busReservation;
     private javax.swing.JComboBox comboboxTo_checkingfare;
+    private javax.swing.JTextField etBusId1_reservation;
+    private javax.swing.JTextField etBusName1_reservation;
+    private javax.swing.JTextField etBusidReservation_reservation;
     private javax.swing.JTextField etBusid_cancellingTicket;
     private javax.swing.JTextField etDate_booking;
+    private javax.swing.JTextField etDate_busReservation;
     private javax.swing.JTextField etDate_checkingfare;
     private javax.swing.JTextField etEnterMoney_payment;
     private javax.swing.JTextField etName_checkingfare;
@@ -1143,12 +1395,21 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JTextField etTotalSeatBook_booking;
     private javax.swing.JTextField etUid_cancellingTicket;
     private javax.swing.JTextField etWeight_booking;
+    private javax.swing.JTextField etWeight_busReservation;
     private javax.swing.JTextField etWeight_cancellingTicket;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -1169,6 +1430,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel labelBusId_cancellingTicket;
